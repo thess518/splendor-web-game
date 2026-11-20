@@ -36,3 +36,20 @@ class TokenBank:
         tokens[GemColor.GOLD] = 5
 
         return cls(tokens)
+
+
+    def take_tokens(self, color: GemColor, amount: int):
+        if amount <= 0:
+            raise ValueError("Amount must be positive.")
+        
+        if self.tokens[color] >= amount:
+            self.tokens[color] -= amount
+        else:
+            raise ValueError(f"{color.value} tokens are less than {amount}.")
+
+
+    def return_tokens(self, color: GemColor, amount: int):
+        if amount <= 0:
+            raise ValueError("Amount must be positive.")
+
+        self.tokens[color] += amount
