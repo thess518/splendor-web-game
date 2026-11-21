@@ -11,7 +11,6 @@ class GemColor(Enum):
     GOLD = "gold"
 
 
-
 @dataclass
 class TokenBank:
     tokens: dict[GemColor, int]
@@ -37,7 +36,6 @@ class TokenBank:
 
         return cls(tokens)
 
-
     def take_tokens(self, color: GemColor, amount: int):
         if amount <= 0:
             raise ValueError("Amount must be positive.")
@@ -46,7 +44,6 @@ class TokenBank:
             self.tokens[color] -= amount
         else:
             raise ValueError(f"{color.value} tokens are less than {amount}.")
-
 
     def return_tokens(self, color: GemColor, amount: int):
         if amount <= 0:
